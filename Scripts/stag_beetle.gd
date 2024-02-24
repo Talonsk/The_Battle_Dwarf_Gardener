@@ -5,21 +5,22 @@ const SPEED = 300.0
 var health = 100
 
 func _physics_process(delta):
-
-	position += (Dwarf.position - position)/SPEED
+	var diff = Dwarf.position - position
+#	if diff <= Vector2(50, 50):
+	position += diff/SPEED
 	look_at(Dwarf.position)
 	move_and_slide()
 
 
 func _on_area_2d_body_entered(body):
 	if body == Scissors:
-		$Timer.start()
+		$DamageTimer.start()
 	if body == Dwarf:
 		Dwarf.health -= 10
 
 func _on_area_2d_body_exited(body):
 	if body == Scissors:
-		$Timer.stop()
+		$DamageTimer.stop()
 	
 func _on_timer_timeout():
 	health -= 25

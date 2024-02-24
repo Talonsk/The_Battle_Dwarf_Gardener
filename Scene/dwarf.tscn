@@ -1,29 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://tthqq58yolis"]
+[gd_scene load_steps=6 format=3 uid="uid://tthqq58yolis"]
 
-[ext_resource type="Texture2D" uid="uid://bapkb05tjnp8d" path="res://Image/garden-gnome-persona-3.png" id="1_j3ohb"]
 [ext_resource type="Script" path="res://Scripts/dwarf.gd" id="1_wqbfp"]
+[ext_resource type="Texture2D" uid="uid://bgd3cx2u42o8n" path="res://Image/Dwarf.png" id="2_ywv6f"]
 [ext_resource type="PackedScene" uid="uid://b036wtahpfe22" path="res://Scene/scissors.tscn" id="3_hroam"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l82og"]
-radius = 16.0
-height = 64.0
+radius = 31.0
+height = 76.0
+
+[sub_resource type="Curve2D" id="Curve2D_bnuea"]
+_data = {
+"points": PackedVector2Array(-63.026, 48.1968, 63.026, -48.1968, -72, -72, -44.2002, -39.5905, 44.2002, 39.5905, 72, -72, 48.7693, -37.7976, -48.7693, 37.7976, 72, 72, 56.6353, 38.7426, -56.6353, -38.7426, -72, 72, -47.5107, 47.877, 47.5107, -47.877, -72, -72)
+}
+point_count = 5
 
 [node name="Dwarf" type="CharacterBody2D"]
-light_mask = 2
-visibility_layer = 5
+z_index = 1
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_wqbfp")
 metadata/_edit_horizontal_guides_ = [64.0]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(0.0978593, 0.0978593)
-texture = ExtResource("1_j3ohb")
+scale = Vector2(0.087, 0.087)
+texture = ExtResource("2_ywv6f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_l82og")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
 [node name="Scissors" parent="." instance=ExtResource("3_hroam")]
-position = Vector2(-27, 18)
+position = Vector2(55, 0)
+metadata/_edit_horizontal_guides_ = [32.0, 16.0]
+
+[node name="MoleRadius" type="Path2D" parent="."]
+position = Vector2(-0.0984726, 0)
+scale = Vector2(1.00108, 1)
+curve = SubResource("Curve2D_bnuea")
+
+[node name="MoleRadiusLocation" type="PathFollow2D" parent="MoleRadius"]
+position = Vector2(-72, -72)
+rotation = -0.652851

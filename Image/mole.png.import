@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c17unuriuslht"
-path="res://.godot/imported/garden-gnome-persona-3.jpg-ddafc6fc1c52e99b9d04e0c4e001ed79.ctex"
+uid="uid://cdijnvqdjjdvi"
+path="res://.godot/imported/mole.png-fd865b289820d42ebb4abaa142578142.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Image/garden-gnome-persona-3.jpg"
-dest_files=["res://.godot/imported/garden-gnome-persona-3.jpg-ddafc6fc1c52e99b9d04e0c4e001ed79.ctex"]
+source_file="res://Image/mole.png"
+dest_files=["res://.godot/imported/mole.png-fd865b289820d42ebb4abaa142578142.ctex"]
 
 [params]
 

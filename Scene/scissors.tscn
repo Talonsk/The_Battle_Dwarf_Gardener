@@ -1,20 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://b036wtahpfe22"]
+[gd_scene load_steps=6 format=3 uid="uid://b036wtahpfe22"]
 
 [ext_resource type="Texture2D" uid="uid://dj38js5s16yuj" path="res://Image/scissors.png" id="1_ar74k"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xru1"]
+atlas = ExtResource("1_ar74k")
+region = Rect2(0, 35, 127, 149)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oexub"]
+atlas = ExtResource("1_ar74k")
+region = Rect2(127, 35, 127, 149)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_snqio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xru1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oexub")
+}],
+"loop": true,
+"name": &"cut_it",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trhi7"]
-radius = 8.0
+radius = 9.0
 height = 24.0
 
 [node name="Scissors" type="CharacterBody2D"]
-light_mask = 2
-visibility_layer = 4
-metadata/_edit_horizontal_guides_ = [32.0, 16.0]
+collision_layer = 8
+collision_mask = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.145695, 0.145695)
-texture = ExtResource("1_ar74k")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 0.785398
+scale = Vector2(0.165354, 0.165354)
+sprite_frames = SubResource("SpriteFrames_snqio")
+animation = &"cut_it"
+frame_progress = 0.124861
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
+position = Vector2(2.38419e-07, 0)
+rotation = 0.785398
 shape = SubResource("CapsuleShape2D_trhi7")
