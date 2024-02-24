@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://be77wy4w7gxpw"]
+
+[ext_resource type="Texture2D" uid="uid://cgnk4b6ju8j2j" path="res://Image/bush.png" id="1_f0dkq"]
+[ext_resource type="Script" path="res://Scripts/bush.gd" id="1_xfntw"]
+[ext_resource type="Texture2D" uid="uid://bp1uuxp1yxhy7" path="res://Image/bushes.png" id="3_yinhg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bqnbg"]
+atlas = ExtResource("3_yinhg")
+region = Rect2(289, 0, 289, 258)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5si7"]
+atlas = ExtResource("3_yinhg")
+region = Rect2(0, 0, 279, 258)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wklmc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bqnbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5si7")
+}],
+"loop": false,
+"name": &"cut",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0lmmf"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5p3fq"]
+radius = 21.0238
+
+[node name="Bush" type="StaticBody2D"]
+visibility_layer = 2
+script = ExtResource("1_xfntw")
+
+[node name="Bush_picture" type="Sprite2D" parent="."]
+visible = false
+light_mask = 0
+visibility_layer = 0
+scale = Vector2(0.124031, 0.124031)
+texture = ExtResource("1_f0dkq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.124031, 0.124031)
+sprite_frames = SubResource("SpriteFrames_wklmc")
+animation = &"cut"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0lmmf")
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 0
+visibility_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5p3fq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

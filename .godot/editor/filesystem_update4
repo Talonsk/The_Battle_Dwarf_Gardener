@@ -1,1 +1,8 @@
 res://Scene/main.tscn
+res://Scripts/main.gd
+res://Scene/dwarf.tscn
+res://Scene/stag_beetle.tscn
+res://Scene/wall.tscn
+res://Scene/bush.tscn
+res://Scene/scissors.tscn
+res://Scripts/stag_beetle.gd

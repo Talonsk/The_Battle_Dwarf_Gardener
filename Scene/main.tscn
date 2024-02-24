@@ -1,3 +1,73 @@
-[gd_scene format=3 uid="uid://c10gkao0aqyqn"]
+[gd_scene load_steps=10 format=3 uid="uid://c10gkao0aqyqn"]
+
+[ext_resource type="Texture2D" uid="uid://bgk7vq1qk3cb7" path="res://Image/Tileset.png" id="1_6q633"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_ryoda"]
+[ext_resource type="PackedScene" uid="uid://tthqq58yolis" path="res://Scene/dwarf.tscn" id="2_updqd"]
+[ext_resource type="PackedScene" uid="uid://bh8hx5sn3s2v2" path="res://Scene/stag_beetle.tscn" id="3_b7xtn"]
+[ext_resource type="PackedScene" uid="uid://diny2dyc4avak" path="res://Scene/wall.tscn" id="4_tpjmk"]
+[ext_resource type="PackedScene" uid="uid://be77wy4w7gxpw" path="res://Scene/bush.tscn" id="5_0dmgj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kuwco"]
+resource_name = "Test_tile_map"
+texture = ExtResource("1_6q633")
+margins = Vector2i(1, 1)
+separation = Vector2i(2, 2)
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_8et6r"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_kuwco")
+
+[sub_resource type="Curve2D" id="Curve2D_hmg4o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -114, -119, 0, 0, 0, 0, 404, -119, 0, 0, 0, 0, 404, 398, 0, 0, 0, 0, -114, 398, 0, 0, 0, 0, -114, -119)
+}
+point_count = 5
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_ryoda")
+StagBeetle = ExtResource("3_b7xtn")
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 4
+tile_set = SubResource("TileSet_8et6r")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 0, 1, 65536, 0, 1, 131072, 0, 1, 196608, 0, 1, 262144, 0, 1, 327680, 0, 1, 393216, 0, 1, 1, 0, 1, 2, 0, 1, 65538, 65536, 0, 131074, 0, 1, 196610, 0, 1, 262146, 0, 1, 327682, 0, 1, 393218, 0, 1, 3, 0, 1, 65539, 65536, 0, 131075, 65536, 0, 196611, 65536, 0, 262147, 65536, 0, 327683, 65536, 0, 393219, 65536, 0, 4, 0, 1, 65540, 0, 1, 131076, 0, 1, 196612, 0, 1, 262148, 0, 1, 327684, 0, 1, 393220, 65536, 0, 5, 0, 1, 65541, 65536, 0, 131077, 0, 1, 196613, 65536, 0, 262149, 65536, 0, 327685, 0, 1, 393221, 65536, 0, 6, 0, 1, 65542, 65536, 0, 131078, 0, 1, 196614, 0, 1, 262150, 65536, 0, 327686, 0, 1, 393222, 0, 1, 7, 0, 1, 65543, 65536, 0, 131079, 65536, 0, 196615, 0, 1, 262151, 65536, 0, 327687, 65536, 0, 393223, 65536, 0, 8, 0, 1, 65544, 0, 1, 131080, 0, 1, 196616, 0, 1, 262152, 0, 1, 327688, 0, 1, 393224, 0, 1, 524295, 0, 1, 458752, 0, 1, 524288, 0, 1, 524289, 0, 1, 458754, 0, 1, 524290, 0, 1, 458755, 0, 1, 524291, 0, 1, 458756, 0, 1, 524292, 0, 1, 458757, 0, 1, 524293, 0, 1, 458758, 0, 1, 458759, 65536, 0, 458760, 0, 1, 524296, 0, 1, 65537, 65536, 0, 131073, 0, 1, 196609, 65536, 0, 262145, 65536, 0, 327681, 65536, 0, 393217, 65536, 0, 458753, 65536, 0, -131072, 65536, 1, -65536, 65536, 1, -131071, 65536, 1, -65535, 65536, 1, -131070, 65536, 1, -65534, 65536, 1, -131069, 65536, 1, -65533, 65536, 1, -131068, 65536, 1, -65532, 65536, 1, -131067, 65536, 1, -65531, 65536, 1, -131066, 65536, 1, -65530, 65536, 1, -131065, 65536, 1, -65529, 65536, 1, -131064, 65536, 1, -65528, 65536, 1, 524294, 0, 1, 589824, 65536, 1, 655360, 65536, 1, 589825, 65536, 1, 655361, 65536, 1, 589826, 65536, 1, 655362, 65536, 1, 589827, 65536, 1, 655363, 65536, 1, 589828, 65536, 1, 655364, 65536, 1, 589829, 65536, 1, 655365, 65536, 1, 589830, 65536, 1, 655366, 65536, 1, 589831, 65536, 1, 655367, 65536, 1, 589832, 65536, 1, 655368, 65536, 1, -131063, 65536, 1, -65527, 65536, 1, 9, 65536, 1, 65545, 65536, 1, 131081, 65536, 1, 196617, 65536, 1, 262153, 65536, 1, 327689, 65536, 1, 393225, 65536, 1, 458761, 65536, 1, 524297, 65536, 1, 589833, 65536, 1, 655369, 65536, 1, -131062, 65536, 1, -65526, 65536, 1, 10, 65536, 1, 65546, 65536, 1, 131082, 65536, 1, 196618, 65536, 1, 262154, 65536, 1, 327690, 65536, 1, 393226, 65536, 1, 458762, 65536, 1, 524298, 65536, 1, 589834, 65536, 1, 655370, 65536, 1, -65538, 65536, 1, -2, 65536, 1, 65534, 65536, 1, 131070, 65536, 1, 196606, 65536, 1, 262142, 65536, 1, 327678, 65536, 1, 393214, 65536, 1, 458750, 65536, 1, 524286, 65536, 1, 589822, 65536, 1, 655358, 65536, 1, 720894, 65536, 1, -65537, 65536, 1, -1, 65536, 1, 65535, 65536, 1, 131071, 65536, 1, 196607, 65536, 1, 262143, 65536, 1, 327679, 65536, 1, 393215, 65536, 1, 458751, 65536, 1, 524287, 65536, 1, 589823, 65536, 1, 655359, 65536, 1, 720895, 65536, 1)
+
+[node name="Dwarf" parent="." instance=ExtResource("2_updqd")]
+position = Vector2(46, 32)
+
+[node name="StagBeetle" parent="." instance=ExtResource("3_b7xtn")]
+position = Vector2(48, 227)
+
+[node name="Wall" parent="." instance=ExtResource("4_tpjmk")]
+
+[node name="Wall3" parent="." instance=ExtResource("4_tpjmk")]
+position = Vector2(0, -20)
+rotation = -1.5708
+
+[node name="Wall4" parent="." instance=ExtResource("4_tpjmk")]
+position = Vector2(0, 288)
+rotation = -1.5708
+
+[node name="Wall2" parent="." instance=ExtResource("4_tpjmk")]
+position = Vector2(308, 0)
+
+[node name="Bush" parent="." instance=ExtResource("5_0dmgj")]
+position = Vector2(240, 47)
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_hmg4o")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-114, -119)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

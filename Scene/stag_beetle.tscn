@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh8hx5sn3s2v2"]
+
+[ext_resource type="Script" path="res://Scripts/stag_beetle.gd" id="1_cqc6y"]
+[ext_resource type="Texture2D" uid="uid://c7dpka1xpspu4" path="res://Image/stag_beetle.png" id="1_ebsf8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oojh"]
+radius = 8.0
+height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e2v0u"]
+radius = 22.0
+height = 70.0
+
+[node name="StagBeetle" type="CharacterBody2D"]
+light_mask = 4
+visibility_layer = 2
+script = ExtResource("1_cqc6y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.166667, 0.166667)
+texture = ExtResource("1_ebsf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8oojh")
+
+[node name="Area2D" type="Area2D" parent="."]
+light_mask = 0
+visibility_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e2v0u")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
