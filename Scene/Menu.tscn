@@ -1,0 +1,284 @@
+[gd_scene load_steps=12 format=3 uid="uid://687dye4ckpix"]
+
+[ext_resource type="Texture2D" uid="uid://c22anffqdoa5s" path="res://Image/Game_name.png" id="1_aq1dx"]
+[ext_resource type="Texture2D" uid="uid://d1r5xukkkadgy" path="res://Image/menu_background.png" id="1_d2ygv"]
+[ext_resource type="Script" path="res://Scripts/menu_layer.gd" id="1_wxr86"]
+[ext_resource type="Texture2D" uid="uid://clvw6l0w47vki" path="res://Image/cross.png" id="2_fl8q3"]
+[ext_resource type="Texture2D" uid="uid://cw0ys27ol8kan" path="res://Image/menu_button_play.png" id="3_4h8e7"]
+[ext_resource type="Texture2D" uid="uid://bqgnaml470tq4" path="res://Image/menu_button_setting.png" id="4_rl3qh"]
+[ext_resource type="Texture2D" uid="uid://bxe0ne5egmjc8" path="res://Image/menu_button_exit.png" id="5_rskkv"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5aqn8"]
+diffuse_texture = ExtResource("3_4h8e7")
+texture_filter = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j6bgw"]
+texture = ExtResource("3_4h8e7")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xrq2b"]
+texture = ExtResource("4_rl3qh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iprda"]
+texture = ExtResource("5_rskkv")
+
+[node name="MenuLayer" type="CanvasLayer"]
+script = ExtResource("1_wxr86")
+metadata/_edit_vertical_guides_ = [1440.0]
+metadata/_edit_horizontal_guides_ = [1152.0]
+metadata/_edit_use_anchors_ = true
+
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu"]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Menu/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_d2ygv")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BoxContainer2" type="BoxContainer" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("1_aq1dx")
+expand_mode = 5
+
+[node name="BoxContainer" type="BoxContainer" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="Play" type="TextureButton" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(392, 172)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture_normal = SubResource("CanvasTexture_5aqn8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer/Play"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.996094, 0.75, 0.332031, 1)
+theme_override_font_sizes/font_size = 72
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 0
+
+[node name="Setting" type="TextureButton" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(532, 226)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture_normal = ExtResource("4_rl3qh")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer/Setting"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -116.0
+offset_right = -25.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.683594, 0.683594, 0.683594, 1)
+theme_override_font_sizes/font_size = 72
+text = "Setting"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Quit" type="TextureButton" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(488, 198)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture_normal = ExtResource("5_rskkv")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer/Quit"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -24.0
+offset_right = 25.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.175781, 0.71875, 0.761719, 1)
+theme_override_font_sizes/font_size = 72
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="Menu/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+
+[node name="SettingPanel" type="Panel" parent="Menu"]
+visible = false
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -491.5
+offset_top = -154.0
+offset_right = 491.5
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/SettingPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -488.0
+offset_top = -154.0
+offset_right = 488.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="Menu/SettingPanel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+columns = 2
+
+[node name="Value" type="Label" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 32
+text = "Value
+"
+
+[node name="ValueSlider" type="HSlider" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Music" type="Label" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 32
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Vois" type="Label" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 32
+text = "Vois"
+
+[node name="VoisSlider" type="HSlider" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="Menu/SettingPanel"]
+layout_mode = 1
+offset_right = 332.0
+offset_bottom = 330.0
+scale = Vector2(0.2, 0.2)
+size_flags_vertical = 0
+icon = ExtResource("2_fl8q3")
+
+[node name="Button1" type="Button" parent="."]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(392, 172)
+offset_left = 524.0
+offset_top = 548.0
+offset_right = 916.0
+offset_bottom = 720.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.996078, 0.74902, 0.333333, 1)
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxTexture_j6bgw")
+text = "Play"
+
+[node name="Button2" type="Button" parent="."]
+visible = false
+custom_minimum_size = Vector2(532, 226)
+offset_left = 454.0
+offset_top = 548.0
+offset_right = 986.0
+offset_bottom = 774.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxTexture_xrq2b")
+text = "Setting"
+
+[node name="Button3" type="Button" parent="."]
+visible = false
+custom_minimum_size = Vector2(488, 198)
+offset_left = 476.0
+offset_top = 548.0
+offset_right = 964.0
+offset_bottom = 746.0
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 72
+theme_override_styles/normal = SubResource("StyleBoxTexture_iprda")
+text = "Exit"
+
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/HBoxContainer/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Menu/SettingPanel/Button" to="." method="_on_button_pressed"]

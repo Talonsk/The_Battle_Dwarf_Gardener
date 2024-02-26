@@ -1,15 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh8hx5sn3s2v2"]
+[gd_scene load_steps=11 format=3 uid="uid://bh8hx5sn3s2v2"]
 
 [ext_resource type="Script" path="res://Scripts/stag_beetle.gd" id="1_cqc6y"]
-[ext_resource type="Texture2D" uid="uid://c7dpka1xpspu4" path="res://Image/stag_beetle.png" id="1_ebsf8"]
+[ext_resource type="Texture2D" uid="uid://ypdqin1wo2jo" path="res://Image/stag_beetle1.png" id="2_m8j18"]
+[ext_resource type="Texture2D" uid="uid://ipexsax06jdv" path="res://Image/stag_beetle_animation.png" id="3_ee8oq"]
+[ext_resource type="Texture2D" uid="uid://cpam7yoobba1w" path="res://Image/pixel1_border.png" id="3_ogs3t"]
+[ext_resource type="Texture2D" uid="uid://n3b750tass68" path="res://Image/pixel2_healthbar.png" id="4_ha5pw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hbc1"]
+atlas = ExtResource("3_ee8oq")
+region = Rect2(2, 15, 121, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8bv0"]
+atlas = ExtResource("3_ee8oq")
+region = Rect2(123, 15, 121, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4xjum"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hbc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8bv0")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8oojh"]
-radius = 8.0
 height = 48.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e2v0u"]
-radius = 22.0
-height = 70.0
+radius = 18.0
+height = 62.0
 
 [node name="StagBeetle" type="CharacterBody2D"]
 collision_layer = 4
@@ -17,9 +41,18 @@ collision_mask = 3
 script = ExtResource("1_cqc6y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 4)
+rotation = 1.46505
+scale = Vector2(0.417504, 0.417504)
+texture = ExtResource("2_m8j18")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 rotation = 1.5708
-scale = Vector2(0.166667, 0.166667)
-texture = ExtResource("1_ebsf8")
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_4xjum")
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -36,6 +69,18 @@ shape = SubResource("CapsuleShape2D_e2v0u")
 
 [node name="DamageTimer" type="Timer" parent="."]
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+offset_left = -39.0
+offset_top = 21.0
+offset_right = 44.0
+offset_bottom = 32.0
+rotation = 4.71238
+scale = Vector2(0.536034, 0.536034)
+value = 100.0
+texture_over = ExtResource("3_ogs3t")
+texture_progress = ExtResource("4_ha5pw")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="DamageTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

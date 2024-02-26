@@ -37,7 +37,7 @@ rotation = 0.785398
 scale = Vector2(0.165354, 0.165354)
 sprite_frames = SubResource("SpriteFrames_snqio")
 animation = &"cut_it"
-frame_progress = 0.124861
+frame_progress = 0.628758
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.38419e-07, 0)
