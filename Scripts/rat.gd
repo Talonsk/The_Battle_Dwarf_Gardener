@@ -41,6 +41,7 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	$AttackTimer.start()
 	if rat_hp <= 0:
+		get_node("%s"%Scissors).set_collision_layer_value(4,true)
 		UI.score += 1
 		UI.rat_count -= 1
 		queue_free()

@@ -28,7 +28,7 @@ func _on_area_2d_body_entered(body):
 		is_scissors_entered = true
 	if body == Dwarf:
 		$AnimatedSprite2D.play("attack")
-#		Dwarf.health -= 10
+		Dwarf.health -= 10
 
 func _on_area_2d_body_exited(body):
 	if body == Scissors:

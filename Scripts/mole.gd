@@ -9,9 +9,11 @@ extends CharacterBody2D
 
 var body_entered = false
 var is_plaing = true
-var mole_health = 50
+var is_dead = false
+var mole_health = 10
 
 func _ready():
+	MoleAnimation.set_animation("got_out")
 	MoleBar.max_value = mole_health
 	$CrawleduOutTimer.start()
 	
@@ -21,7 +23,11 @@ func _process(delta):
 	underground_attack(is_scissors_playing, delta*10)
 
 func _on_crawledu_out_timer_timeout():
-	MoleAnimation.play("got_out")
+	if mole_health < 25:
+		MoleAnimation.play("wounded_mole")
+	else:
+		MoleAnimation.play("got_out")
+		
 	set_collision_layer_value(3,true)
 	MoleCollision.set_collision_mask_value(2,true)
 	MoleCollision.set_collision_mask_value(4,true)
@@ -36,20 +42,28 @@ func _on_crawledu_out_timer_timeout():
 func _on_hiding_timer_timeout():
 	MoleAnimation.stop()
 	if !MoleAnimation.is_playing():
-		MoleAnimation.play_backwards("got_out")
 		set_collision_layer_value(3,false)
 		MoleCollision.set_collision_mask_value(2,false)
 		MoleCollision.set_collision_mask_value(4,false)
 		MoleBar.visible = false
 		$CrawleduOutTimer.start()
 		$HidingTimer.stop()
+		if mole_health < 25:
+			MoleAnimation.play_backwards("wounded_mole")
+		else:
+			MoleAnimation.play_backwards("got_out")
 
 func _on_area_2d_body_entered(body):
-	MoleAnimation.play("figtht")
+	
+	if mole_health < 25:
+		MoleAnimation.play("wounded_figtht")
+	else:
+		MoleAnimation.play("figtht")
+		
 	if body == Scissors:
 		body_entered = true
 	else:
-#		body.health -= 5
+		body.health -= 5
 		if body.position.x > position.x:
 			MoleAnimation.scale.x = abs(MoleAnimation.scale.x) * -1
 		else:
@@ -65,6 +79,13 @@ func underground_attack(is_plaing, damege):
 	if is_plaing and body_entered:
 		mole_health -= damege
 	if mole_health <= 0:
-		UI.score += 5
-		UI.mole_count -= 1
-		queue_free()
+#		MoleAnimation.stop()
+		if !is_dead:
+			MoleAnimation.scale.x = abs(MoleAnimation.scale.x)
+			MoleAnimation.play_backwards("death_animation")
+			is_dead = true
+		elif !MoleAnimation.is_playing():
+			UI.score += 5
+			UI.mole_count -= 1
+			queue_free()
+			

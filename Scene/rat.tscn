@@ -74,7 +74,7 @@ metadata/_edit_horizontal_guides_ = [16.0]
 scale = Vector2(0.238806, 0.238806)
 sprite_frames = SubResource("SpriteFrames_1caky")
 animation = &"jamp"
-frame_progress = 0.79814
+frame_progress = 0.810428
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(12, 1)

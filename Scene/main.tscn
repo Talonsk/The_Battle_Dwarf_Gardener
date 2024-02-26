@@ -304,7 +304,6 @@ layer_0/tile_data = PackedInt32Array(-131072, 327688, 5, -65536, 327688, 5, -131
 
 [node name="Dwarf" parent="." instance=ExtResource("2_updqd")]
 position = Vector2(73, 43)
-collision_mask = 1
 
 [node name="StagBeetle" parent="." instance=ExtResource("3_b7xtn")]
 position = Vector2(48, 227)
@@ -328,8 +327,6 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource("8_fliel")]
-anchor_right = 3.02083
-anchor_bottom = 1.76042
 size_flags_horizontal = 0
 
 [node name="Wall" parent="." instance=ExtResource("4_tpjmk")]
