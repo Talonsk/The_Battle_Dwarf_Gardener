@@ -10,7 +10,7 @@ extends CharacterBody2D
 var body_entered = false
 var is_plaing = true
 var is_dead = false
-var mole_health = 10
+var mole_health = 50
 
 func _ready():
 	MoleAnimation.set_animation("got_out")

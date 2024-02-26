@@ -26,7 +26,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 32
-text = "Счёт: "
+text = "Score: "
 
 [node name="BoxContainer" type="BoxContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -37,4 +37,4 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 32
-text = "Раунд: "
+text = "Raund: "

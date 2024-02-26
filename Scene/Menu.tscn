@@ -210,18 +210,6 @@ size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 32
 text = "BenvyaGhurlik, Eisluft"
 
-[node name="Music" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-theme_override_font_sizes/font_size = 32
-text = "Music"
-
-[node name="MusicText" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 6
-theme_override_font_sizes/font_size = 32
-text = "zvukipro.com"
-
 [node name="Tiles" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
@@ -255,6 +243,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Background"
+
+[node name="Background2" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "https://phonoteka.org/4228-pikselnyj-fon-dlja-igry.html"
+horizontal_alignment = 1
+autowrap_mode = 1
 
 [node name="Button" type="Button" parent="Menu/TitrePanel"]
 layout_mode = 1
