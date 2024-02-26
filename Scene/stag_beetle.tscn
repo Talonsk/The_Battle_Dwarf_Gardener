@@ -37,7 +37,7 @@ height = 62.0
 
 [node name="StagBeetle" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 15
 script = ExtResource("1_cqc6y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -100,7 +100,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 0
 
-[node name="Setting" type="TextureButton" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Titre" type="TextureButton" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(532, 226)
 layout_mode = 2
@@ -109,7 +109,7 @@ size_flags_vertical = 3
 texture_normal = ExtResource("4_rl3qh")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer/Setting"]
+[node name="Label" type="Label" parent="Menu/MarginContainer/VBoxContainer/HBoxContainer/Titre"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -123,7 +123,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0.683594, 0.683594, 0.683594, 1)
 theme_override_font_sizes/font_size = 72
-text = "Setting"
+text = "Titre"
 horizontal_alignment = 1
 vertical_alignment = 2
 
@@ -158,7 +158,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 
-[node name="SettingPanel" type="Panel" parent="Menu"]
+[node name="TitrePanel" type="Panel" parent="Menu"]
 visible = false
 z_as_relative = false
 layout_mode = 1
@@ -174,7 +174,7 @@ offset_bottom = 154.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Menu/SettingPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="Menu/TitrePanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -192,44 +192,65 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 10
 
-[node name="GridContainer" type="GridContainer" parent="Menu/SettingPanel/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="Menu/TitrePanel/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 columns = 2
 
-[node name="Value" type="Label" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
+[node name="Authors" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 32
-text = "Value
+text = "Authors
 "
 
-[node name="ValueSlider" type="HSlider" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
+[node name="AuthorsText" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 32
+text = "BenvyaGhurlik, Eisluft"
 
-[node name="Music" type="Label" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
+[node name="Music" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 32
 text = "Music"
 
-[node name="MusicSlider" type="HSlider" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="Vois" type="Label" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
+[node name="MusicText" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 32
-text = "Vois"
+text = "zvukipro.com"
 
-[node name="VoisSlider" type="HSlider" parent="Menu/SettingPanel/MarginContainer/GridContainer"]
+[node name="Tiles" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 32
+text = "Tiles"
 
-[node name="Button" type="Button" parent="Menu/SettingPanel"]
+[node name="TilesText" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Basic Tileset and Asset Pack 32x32 Pixels
+by schwarnhild"
+horizontal_alignment = 1
+
+[node name="HpBars" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "HP Bars"
+
+[node name="HpBarsText" type="Label" parent="Menu/TitrePanel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Pixel Health Bar Asset Pack
+by adwitr"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Menu/TitrePanel"]
 layout_mode = 1
 offset_right = 332.0
 offset_bottom = 330.0
@@ -279,6 +300,6 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_iprda")
 text = "Exit"
 
 [connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/HBoxContainer/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/HBoxContainer/Setting" to="." method="_on_setting_pressed"]
+[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/HBoxContainer/Titre" to="." method="_on_setting_pressed"]
 [connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Menu/SettingPanel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Menu/TitrePanel/Button" to="." method="_on_button_pressed"]

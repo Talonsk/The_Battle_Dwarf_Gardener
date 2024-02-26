@@ -1,25 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://be77wy4w7gxpw"]
+[gd_scene load_steps=7 format=3 uid="uid://be77wy4w7gxpw"]
 
 [ext_resource type="Texture2D" uid="uid://cgnk4b6ju8j2j" path="res://Image/bush.png" id="1_f0dkq"]
 [ext_resource type="Script" path="res://Scripts/bush.gd" id="1_xfntw"]
-[ext_resource type="Texture2D" uid="uid://bp1uuxp1yxhy7" path="res://Image/bushes.png" id="3_yinhg"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bqnbg"]
-atlas = ExtResource("3_yinhg")
-region = Rect2(289, 0, 289, 258)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n5si7"]
-atlas = ExtResource("3_yinhg")
-region = Rect2(0, 0, 279, 258)
+[ext_resource type="Texture2D" uid="uid://degiq0fcwggif" path="res://Image/boxwood.png" id="3_gpqdi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wklmc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bqnbg")
+"texture": ExtResource("1_f0dkq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n5si7")
+"texture": ExtResource("3_gpqdi")
 }],
 "loop": false,
 "name": &"cut",
@@ -37,14 +29,13 @@ collision_mask = 6
 script = ExtResource("1_xfntw")
 
 [node name="Bush_picture" type="Sprite2D" parent="."]
-visible = false
 light_mask = 0
 visibility_layer = 0
 scale = Vector2(0.124031, 0.124031)
 texture = ExtResource("1_f0dkq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.124031, 0.124031)
+scale = Vector2(0.392157, 0.392157)
 sprite_frames = SubResource("SpriteFrames_wklmc")
 animation = &"cut"
 

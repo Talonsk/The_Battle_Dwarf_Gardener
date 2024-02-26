@@ -5,19 +5,18 @@ extends CharacterBody2D
 @onready var Dwarf = $"/root/Main/Dwarf/"
 @onready var UI = $"../CanvasLayer/UI"
 @onready var MoleCollision = $Area2D
-@onready var Mole_bar = $MoleBar
-
+@onready var MoleBar = $MoleBar
 
 var body_entered = false
 var is_plaing = true
 var mole_health = 50
 
 func _ready():
-	Mole_bar.max_value = mole_health
+	MoleBar.max_value = mole_health
 	$CrawleduOutTimer.start()
 	
 func _process(delta):
-	Mole_bar.set_value(mole_health)
+	MoleBar.set_value(mole_health)
 	var is_scissors_playing = ScissorsAnimation.is_playing()
 	underground_attack(is_scissors_playing, delta*10)
 
@@ -26,7 +25,7 @@ func _on_crawledu_out_timer_timeout():
 	set_collision_layer_value(3,true)
 	MoleCollision.set_collision_mask_value(2,true)
 	MoleCollision.set_collision_mask_value(4,true)
-	Mole_bar.visible = true
+	MoleBar.visible = true
 	
 	var dwarf_position = Dwarf.global_position
 	var mole_spawn_location = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
@@ -35,30 +34,30 @@ func _on_crawledu_out_timer_timeout():
 	$HidingTimer.start()
 
 func _on_hiding_timer_timeout():
-#	visible = false
 	MoleAnimation.stop()
 	if !MoleAnimation.is_playing():
 		MoleAnimation.play_backwards("got_out")
 		set_collision_layer_value(3,false)
 		MoleCollision.set_collision_mask_value(2,false)
 		MoleCollision.set_collision_mask_value(4,false)
-		Mole_bar.visible = false
+		MoleBar.visible = false
 		$CrawleduOutTimer.start()
 		$HidingTimer.stop()
 
-	
 func _on_area_2d_body_entered(body):
 	MoleAnimation.play("figtht")
 	if body == Scissors:
 		body_entered = true
 	else:
-		body.health -= 5
+#		body.health -= 5
 		if body.position.x > position.x:
 			MoleAnimation.scale.x = abs(MoleAnimation.scale.x) * -1
 		else:
 			MoleAnimation.scale.x = abs(MoleAnimation.scale.x)
 
 func _on_area_2d_body_exited(body):
+	MoleAnimation.set_animation("got_out")
+	MoleAnimation.set_frame(6)
 	if body == Scissors:
 		body_entered = false
 
@@ -67,4 +66,5 @@ func underground_attack(is_plaing, damege):
 		mole_health -= damege
 	if mole_health <= 0:
 		UI.score += 5
+		UI.mole_count -= 1
 		queue_free()

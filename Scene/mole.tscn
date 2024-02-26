@@ -99,7 +99,7 @@ size = Vector2(100, 38)
 
 [node name="Mole" type="CharacterBody2D"]
 collision_layer = 0
-collision_mask = 3
+collision_mask = 15
 script = ExtResource("1_pjfyp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

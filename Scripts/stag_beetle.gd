@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var ScissorsAnimation = $"/root/Main/Dwarf/Scissors/AnimatedSprite2D"
 @onready var StagBeetleHpBar = $TextureProgressBar
 @onready var UI = $"../CanvasLayer/UI"
+
 const SPEED = 300.0
 var health = 100
 var is_scissors_entered = false
@@ -27,7 +28,7 @@ func _on_area_2d_body_entered(body):
 		is_scissors_entered = true
 	if body == Dwarf:
 		$AnimatedSprite2D.play("attack")
-		Dwarf.health -= 10
+#		Dwarf.health -= 10
 
 func _on_area_2d_body_exited(body):
 	if body == Scissors:
@@ -38,7 +39,8 @@ func _on_area_2d_body_exited(body):
 func _on_damage_timer_timeout():
 	health -= 25
 	if health <= 0:
-		UI.score += 2
+		UI.score += 5
+		UI.stag_beetle_count -= 1
 		queue_free()
 
 func attack(is_attack):
