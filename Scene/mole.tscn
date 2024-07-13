@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ijm3dnllc2op"]
+[gd_scene load_steps=45 format=3 uid="uid://ijm3dnllc2op"]
 
 [ext_resource type="Texture2D" uid="uid://cdijnvqdjjdvi" path="res://Image/mole.png" id="1_f5g8p"]
 [ext_resource type="Script" path="res://Scripts/mole.gd" id="1_pjfyp"]
@@ -266,10 +266,29 @@ height = 50.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4qlj"]
 size = Vector2(100, 38)
 
+[sub_resource type="Animation" id="Animation_h1bfi"]
+resource_name = "got_out"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0ebcy"]
+_data = {
+"got_out": SubResource("Animation_h1bfi")
+}
+
 [node name="Mole" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 0
-collision_mask = 15
+collision_mask = 7
 script = ExtResource("1_pjfyp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -282,7 +301,7 @@ texture = ExtResource("1_f5g8p")
 position = Vector2(3.57628e-07, -4.76837e-07)
 scale = Vector2(0.247, 0.247)
 sprite_frames = SubResource("SpriteFrames_qu1kh")
-animation = &"got_out"
+animation = &"death_animation"
 
 [node name="HidingTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -314,6 +333,12 @@ scale = Vector2(0.536034, 0.536034)
 value = 100.0
 texture_over = ExtResource("5_6cj1i")
 texture_progress = ExtResource("6_hkoew")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_0ebcy")
+}
 
 [connection signal="timeout" from="HidingTimer" to="." method="_on_hiding_timer_timeout"]
 [connection signal="timeout" from="CrawleduOutTimer" to="." method="_on_crawledu_out_timer_timeout"]

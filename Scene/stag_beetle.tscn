@@ -38,7 +38,7 @@ height = 62.0
 [node name="StagBeetle" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 4
-collision_mask = 15
+collision_mask = 7
 script = ExtResource("1_cqc6y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -62,13 +62,11 @@ shape = SubResource("CapsuleShape2D_8oojh")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 10
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_e2v0u")
-
-[node name="DamageTimer" type="Timer" parent="."]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 texture_filter = 1
@@ -84,4 +82,3 @@ texture_progress = ExtResource("4_ha5pw")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
-[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

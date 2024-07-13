@@ -1,4 +1,6 @@
 res://Scene/main.tscn
+res://Scripts/main.gd
+res://Scripts/ui.gd
 res://Scene/dwarf.tscn
 res://Scene/scissors.tscn
 res://Scene/stag_beetle.tscn
@@ -7,5 +9,5 @@ res://Scene/rat.tscn
 res://Scene/bush.tscn
 res://Scene/flower.tscn
 res://Scene/wall.tscn
-res://Scene/ui.tscn
 res://Scene/Menu.tscn
+res://Scene/ui.tscn

@@ -3,10 +3,38 @@ extends Node2D
 @export var StagBeetle: PackedScene
 @export var Mole: PackedScene
 @export var Rat: PackedScene
+@onready var dwarf = $Dwarf
 @onready var UI = $CanvasLayer/UI
 
 func _process(delta):
+	if UI.is_new_game_start:
+		start_game()
+		UI.is_new_game_start = false
+		
 	if UI.is_new_raund_start == true and $InsectsSpawnTimer.is_stopped():
+		$InsectsSpawnTimer.start()
+		mole_spawn()
+		rat_spawn()
+		
+	if dwarf.health <= 0:
+		UI.show_dead_panel()
+		get_tree().paused = true
+		if  UI.is_dead:
+			dwarf.health = 210
+		
+func  start_game():
+	print(find_children('StagBeetle'), get_children())
+	for mole in find_children('Mole'):
+		print(mole)
+		remove_child(mole)
+		mole.queue_free()
+	for stag_beetle in find_children('StagBeetle'):
+		remove_child(stag_beetle)
+		stag_beetle.queue_free()
+	for rat in find_children('Rat'):
+		remove_child(rat)
+		rat.queue_free()
+		
 		$InsectsSpawnTimer.start()
 		mole_spawn()
 		rat_spawn()

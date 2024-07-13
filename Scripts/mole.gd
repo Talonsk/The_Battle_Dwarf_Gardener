@@ -1,16 +1,12 @@
 extends CharacterBody2D
-@onready var ScissorsAnimation = $"/root/Main/Dwarf/Scissors/AnimatedSprite2D"
-@onready var Scissors = $"/root/Main/Dwarf/Scissors"
 @onready var MoleAnimation = $AnimatedSprite2D
 @onready var Dwarf = $"/root/Main/Dwarf/"
 @onready var UI = $"../CanvasLayer/UI"
 @onready var MoleCollision = $Area2D
 @onready var MoleBar = $MoleBar
 
-var body_entered = false
-var is_plaing = true
 var is_dead = false
-var mole_health = 50
+var mole_health = 100
 
 func _ready():
 	MoleAnimation.set_animation("got_out")
@@ -19,8 +15,7 @@ func _ready():
 	
 func _process(delta):
 	MoleBar.set_value(mole_health)
-	var is_scissors_playing = ScissorsAnimation.is_playing()
-	underground_attack(is_scissors_playing, delta*10)
+	death()
 
 func _on_crawledu_out_timer_timeout():
 	if mole_health < 25:
@@ -30,7 +25,6 @@ func _on_crawledu_out_timer_timeout():
 		
 	set_collision_layer_value(3,true)
 	MoleCollision.set_collision_mask_value(2,true)
-	MoleCollision.set_collision_mask_value(4,true)
 	MoleBar.visible = true
 	
 	var dwarf_position = Dwarf.global_position
@@ -44,7 +38,6 @@ func _on_hiding_timer_timeout():
 	if !MoleAnimation.is_playing():
 		set_collision_layer_value(3,false)
 		MoleCollision.set_collision_mask_value(2,false)
-		MoleCollision.set_collision_mask_value(4,false)
 		MoleBar.visible = false
 		$CrawleduOutTimer.start()
 		$HidingTimer.stop()
@@ -54,32 +47,27 @@ func _on_hiding_timer_timeout():
 			MoleAnimation.play_backwards("got_out")
 
 func _on_area_2d_body_entered(body):
+	body.health -= 5
 	
 	if mole_health < 25:
 		MoleAnimation.play("wounded_figtht")
 	else:
 		MoleAnimation.play("figtht")
 		
-	if body == Scissors:
-		body_entered = true
+	if body.position.x > position.x:
+		MoleAnimation.scale.x = abs(MoleAnimation.scale.x) * -1
 	else:
-		body.health -= 5
-		if body.position.x > position.x:
-			MoleAnimation.scale.x = abs(MoleAnimation.scale.x) * -1
-		else:
-			MoleAnimation.scale.x = abs(MoleAnimation.scale.x)
+		MoleAnimation.scale.x = abs(MoleAnimation.scale.x)
 
 func _on_area_2d_body_exited(body):
 	MoleAnimation.set_animation("got_out")
 	MoleAnimation.set_frame(6)
-	if body == Scissors:
-		body_entered = false
 
-func underground_attack(is_plaing, damege):
-	if is_plaing and body_entered:
-		mole_health -= damege
+func damage():
+	mole_health -= 5
+	
+func death():
 	if mole_health <= 0:
-#		MoleAnimation.stop()
 		if !is_dead:
 			MoleAnimation.scale.x = abs(MoleAnimation.scale.x)
 			MoleAnimation.play_backwards("death_animation")
@@ -88,4 +76,4 @@ func underground_attack(is_plaing, damege):
 			UI.score += 5
 			UI.mole_count -= 1
 			queue_free()
-			
+
