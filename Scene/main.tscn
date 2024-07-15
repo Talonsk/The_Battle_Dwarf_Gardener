@@ -305,14 +305,7 @@ layer_0/tile_data = PackedInt32Array(-131072, 327688, 5, -65536, 327688, 5, -131
 [node name="Dwarf" parent="." instance=ExtResource("2_updqd")]
 position = Vector2(73, 43)
 
-[node name="StagBeetle" parent="." instance=ExtResource("3_b7xtn")]
-position = Vector2(48, 227)
-
-[node name="Mole" parent="." instance=ExtResource("7_b53lr")]
-position = Vector2(248, 306)
-
-[node name="Rat" parent="." instance=ExtResource("9_qay7e")]
-position = Vector2(96, 141)
+[node name="Enemes" type="Node2D" parent="."]
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_hmg4o")
@@ -329,66 +322,74 @@ one_shot = true
 [node name="UI" parent="CanvasLayer" instance=ExtResource("8_fliel")]
 size_flags_horizontal = 0
 
-[node name="Wall" parent="." instance=ExtResource("4_tpjmk")]
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Obstacle" type="Node2D" parent="Environment"]
+
+[node name="Wall" parent="Environment/Obstacle" instance=ExtResource("4_tpjmk")]
 position = Vector2(-128, 0)
 
-[node name="Wall3" parent="." instance=ExtResource("4_tpjmk")]
+[node name="Wall3" parent="Environment/Obstacle" instance=ExtResource("4_tpjmk")]
 position = Vector2(0, -160)
 rotation = -1.5708
 
-[node name="Wall4" parent="." instance=ExtResource("4_tpjmk")]
+[node name="Wall4" parent="Environment/Obstacle" instance=ExtResource("4_tpjmk")]
 position = Vector2(0, 416)
 rotation = -1.5708
 
-[node name="Wall2" parent="." instance=ExtResource("4_tpjmk")]
+[node name="Wall2" parent="Environment/Obstacle" instance=ExtResource("4_tpjmk")]
 position = Vector2(449, 0)
 
-[node name="Bush" parent="." instance=ExtResource("5_0dmgj")]
+[node name="Bushes" type="Node2D" parent="Environment"]
+
+[node name="Bush" parent="Environment/Bushes" instance=ExtResource("5_0dmgj")]
 position = Vector2(220, 104)
 
-[node name="Bush9" parent="." instance=ExtResource("5_0dmgj")]
+[node name="Bush9" parent="Environment/Bushes" instance=ExtResource("5_0dmgj")]
 position = Vector2(220, 40)
 
-[node name="Bush2" parent="." instance=ExtResource("5_0dmgj")]
+[node name="Bush2" parent="Environment/Bushes" instance=ExtResource("5_0dmgj")]
 position = Vector2(222, -91)
 
-[node name="Bush3" parent="." instance=ExtResource("5_0dmgj")]
+[node name="Bush3" parent="Environment/Bushes" instance=ExtResource("5_0dmgj")]
 position = Vector2(42, -17)
 
-[node name="Bush4" parent="." instance=ExtResource("5_0dmgj")]
+[node name="Bush4" parent="Environment/Bushes" instance=ExtResource("5_0dmgj")]
 position = Vector2(312, 306)
 
-[node name="Bush8" parent="." instance=ExtResource("5_0dmgj")]
+[node name="Bush8" parent="Environment/Bushes" instance=ExtResource("5_0dmgj")]
 position = Vector2(243, 262)
 
-[node name="Bush6" parent="." instance=ExtResource("5_0dmgj")]
+[node name="Bush6" parent="Environment/Bushes" instance=ExtResource("5_0dmgj")]
 position = Vector2(-47, 238)
 
-[node name="Bush7" parent="." instance=ExtResource("5_0dmgj")]
+[node name="Bush7" parent="Environment/Bushes" instance=ExtResource("5_0dmgj")]
 position = Vector2(39, 366)
 
-[node name="Flower" parent="." instance=ExtResource("10_wtl4g")]
+[node name="Flowers" type="Node2D" parent="Environment"]
+
+[node name="Flower" parent="Environment/Flowers" instance=ExtResource("10_wtl4g")]
 position = Vector2(272, 144)
 
-[node name="Flower2" parent="." instance=ExtResource("10_wtl4g")]
+[node name="Flower2" parent="Environment/Flowers" instance=ExtResource("10_wtl4g")]
 position = Vector2(1, 190)
 
-[node name="Flower3" parent="." instance=ExtResource("10_wtl4g")]
+[node name="Flower3" parent="Environment/Flowers" instance=ExtResource("10_wtl4g")]
 position = Vector2(174, 310)
 
-[node name="Flower4" parent="." instance=ExtResource("10_wtl4g")]
+[node name="Flower4" parent="Environment/Flowers" instance=ExtResource("10_wtl4g")]
 position = Vector2(91, -91)
 
-[node name="Flower5" parent="." instance=ExtResource("10_wtl4g")]
+[node name="Flower5" parent="Environment/Flowers" instance=ExtResource("10_wtl4g")]
 position = Vector2(243, 360)
 
-[node name="Flower6" parent="." instance=ExtResource("10_wtl4g")]
+[node name="Flower6" parent="Environment/Flowers" instance=ExtResource("10_wtl4g")]
 position = Vector2(354, -89)
 
-[node name="Flower7" parent="." instance=ExtResource("10_wtl4g")]
+[node name="Flower7" parent="Environment/Flowers" instance=ExtResource("10_wtl4g")]
 position = Vector2(167, 89)
 
-[node name="Flower8" parent="." instance=ExtResource("10_wtl4g")]
+[node name="Flower8" parent="Environment/Flowers" instance=ExtResource("10_wtl4g")]
 position = Vector2(44, 37)
 
 [connection signal="timeout" from="InsectsSpawnTimer" to="." method="_on_timer_timeout"]

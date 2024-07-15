@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var MoleAnimation = $AnimatedSprite2D
 @onready var Dwarf = $"/root/Main/Dwarf/"
-@onready var UI = $"../CanvasLayer/UI"
+@onready var UI = $"/root/Main/CanvasLayer/UI"
 @onready var MoleCollision = $Area2D
 @onready var MoleBar = $MoleBar
 

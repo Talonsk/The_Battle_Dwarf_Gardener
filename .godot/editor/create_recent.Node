@@ -1,3 +1,4 @@
+Node2D
 Button
 Label
 Panel
@@ -29,4 +30,3 @@ TextureProgressBar
 ProgressBar
 PathFollow2D
 Path2D
-Camera2D

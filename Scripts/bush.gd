@@ -1,6 +1,6 @@
 extends StaticBody2D
 @onready var ScissorsAnimation = $"/root/Main/Dwarf/Scissors/AnimatedSprite2D"
-@onready var UI = $"../CanvasLayer/UI"
+@onready var UI = $"/root/Main/CanvasLayer/UI"
 @onready var picture = $AnimatedSprite2D
 var is_body_entered = false
 

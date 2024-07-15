@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@onready var UI = $"../CanvasLayer/UI"
+@onready var UI = $"/root/Main/CanvasLayer/UI"
 @onready var Dwarf = $"/root/Main/Dwarf/"
 @onready var RatAnimation = $AnimatedSprite2D
 @onready var RatProgressBar = $TextureProgressBar

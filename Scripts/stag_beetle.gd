@@ -1,7 +1,7 @@
 extends CharacterBody2D
 @onready var Dwarf = $"/root/Main/Dwarf"
 @onready var StagBeetleHpBar = $TextureProgressBar
-@onready var UI = $"../CanvasLayer/UI"
+@onready var UI = $"/root/Main/CanvasLayer/UI"
 
 const SPEED = 300.0
 var health = 100
